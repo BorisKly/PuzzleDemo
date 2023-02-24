@@ -39,7 +39,7 @@ class LevelsView: UIView {
     public let collectionOfLevels: UICollectionView = {
         let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collection.backgroundColor = .white
+        collection.backgroundColor = .clear
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 5
         layout.itemSize = CGSize(width: 100, height: 100)

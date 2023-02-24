@@ -58,7 +58,6 @@ class LevelOneView: UIView {
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 1
         layout.itemSize = CGSize(width: 84.25, height: 84.25)
-        layout.minimumLineSpacing = 1
         layout.scrollDirection = .vertical
         collection.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return collection
@@ -66,7 +65,7 @@ class LevelOneView: UIView {
 
     private let correctPuzzle: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "image15.pdf")
+        view.image = UIImage(named: "level1.pdf")
         view.backgroundColor = .white
         return view
     }()
@@ -75,7 +74,6 @@ class LevelOneView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.registerCollection()
-        self.backgroundColor = Colors.background1
         self.addSubview(backgroundImage)
         self.addSubview(backToLevels)
         self.addSubview(reloadLevel)
@@ -98,7 +96,7 @@ class LevelOneView: UIView {
     // MARK: - Public Methods
 
     private func registerCollection() {
-        self.mixedCollectionOfElementsOfPuzzle.register(LevelsViewCell.self, forCellWithReuseIdentifier: "Cell")
+        self.mixedCollectionOfElementsOfPuzzle.register(LevelOneViewCell.self, forCellWithReuseIdentifier: "LevelOneCell")
     }
 
     private func setConstraints() {

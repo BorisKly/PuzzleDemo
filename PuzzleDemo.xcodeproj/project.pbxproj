@@ -36,6 +36,7 @@
 		ECF8632029A90719005971DE /* LevelOneViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF8631F29A90719005971DE /* LevelOneViewController+.swift */; };
 		ECF8632229A938D2005971DE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF8632129A938D2005971DE /* Fonts.swift */; };
 		ECF8632429A938F7005971DE /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF8632329A938F7005971DE /* CornerRadius.swift */; };
+		ECF8632729A96888005971DE /* PublicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF8632629A96888005971DE /* PublicService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		ECF8631F29A90719005971DE /* LevelOneViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelOneViewController+.swift"; sourceTree = "<group>"; };
 		ECF8632129A938D2005971DE /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		ECF8632329A938F7005971DE /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
+		ECF8632629A96888005971DE /* PublicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicService.swift; sourceTree = "<group>"; };
 		FC0F2DB48760216AA29B3C64 /* Pods-PuzzleDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PuzzleDemo.release.xcconfig"; path = "Target Support Files/Pods-PuzzleDemo/Pods-PuzzleDemo.release.xcconfig"; sourceTree = "<group>"; };
 		FD42698EE7E43D9F600F3945 /* Pods_PuzzleDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PuzzleDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 		ECF862D229A8A986005971DE /* PuzzleDemo */ = {
 			isa = PBXGroup;
 			children = (
+				ECF8632529A96864005971DE /* PublicService */,
 				ECF862F029A8AD9B005971DE /* MainScreen */,
 				ECF862FD29A8CCF2005971DE /* Settings */,
 				ECF862F729A8B087005971DE /* GameRules */,
@@ -219,6 +222,14 @@
 				ECF8631829A8FD6C005971DE /* LevelCompletedView.swift */,
 			);
 			path = LevelCompleted;
+			sourceTree = "<group>";
+		};
+		ECF8632529A96864005971DE /* PublicService */ = {
+			isa = PBXGroup;
+			children = (
+				ECF8632629A96888005971DE /* PublicService.swift */,
+			);
+			path = PublicService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +371,7 @@
 				ECF862FB29A8B12D005971DE /* GameRulesView.swift in Sources */,
 				ECF862F929A8B0FC005971DE /* GameRulesViewController.swift in Sources */,
 				ECF8631B29A8FE18005971DE /* LevelsViewController+.swift in Sources */,
+				ECF8632729A96888005971DE /* PublicService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,10 +14,6 @@ extension LevelsViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        let imageView = UIImageView()
-        let image = UIImage(named: "image21.pdf")
-        imageView.image = image
-        cell.contentView.addSubview(imageView)
         return cell
     }
 

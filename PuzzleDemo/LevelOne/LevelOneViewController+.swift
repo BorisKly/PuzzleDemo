@@ -13,11 +13,15 @@ extension LevelOneViewController: UICollectionViewDelegate, UICollectionViewData
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LevelOneCell", for: indexPath)
+        let image: UIImage = arrayOfImages[indexPath.row]
+        let imageView = UIImageView(image: image)
+        cell.contentView.addSubview(imageView)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
         print(indexPath.row)
     }
 }

@@ -13,9 +13,11 @@ class LevelOneViewCell: UICollectionViewCell {
     // MARK: -
     // MARK: Public Properties
 
-    public let imageCell: UIImageView = {
+    private let imageCell: UIImageView = {
       let image = UIImageView()
-        image.backgroundColor = .yellow
+         image.backgroundColor = Colors.background3
+//        let img = UIImage(named: "level1.pdf")
+//        image.image = img
         return image
     }()
 
@@ -36,8 +38,7 @@ class LevelOneViewCell: UICollectionViewCell {
     // MARK: Private Methods
 
     private func setConstraints() {
-
         imageCell.pin
-            .margin(0)
+            .all(0)
     }
 }

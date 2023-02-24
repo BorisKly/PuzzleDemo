@@ -23,7 +23,13 @@ class LevelOneViewController: UIViewController {
 
     public var model = LevelOneModel()
 
+    var arrayOfImages: [UIImage] = []
+
+
+    //let level1 = UIImage(named: "level1.pdf")
+
     private var timer: Timer?
+
 
     // MARK: - Privat Properties
 
@@ -47,20 +53,12 @@ class LevelOneViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.timer = Timer.scheduledTimer(timeInterval: 1,
-                                     target: self,
-                                     selector: #selector(updateTime),
-                                     userInfo: nil,
-                                     repeats: true)
+        self.arrayOfImages = PublicService().setRandomArrayOf16Images("level1.pdf")
+        
         mainView?.mixedCollectionOfElementsOfPuzzle.delegate = self
         mainView?.mixedCollectionOfElementsOfPuzzle.dataSource = self
 
         bindView()
-    }
-
-    @objc func updateTime(_ timer: Timer) {
-       // mainView?.timer.text = self.timer.
-        print("timer fired!")
     }
 
     func bindView() {

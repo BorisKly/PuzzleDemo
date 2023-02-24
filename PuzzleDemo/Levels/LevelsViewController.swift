@@ -48,7 +48,6 @@ class LevelsViewController: UIViewController {
         super.viewDidLoad()
         mainView?.collectionOfLevels.delegate = self
         mainView?.collectionOfLevels.dataSource = self
-      //  registerCollection()
         bindView()
     }
 

@@ -10,55 +10,73 @@ import PinLayout
 
 class SettingsView: UIView {
 
+    let backgroundImage: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "image5.pdf")
+        view.backgroundColor = .white
+        return view
+    }()
 
     let backToMainScreenButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
-        button.setTitle("<<<", for: .normal)
-        button.setTitleColor(Colors.background1, for: .normal)
+        let vector = UIImage(named: "Vector.pdf")
+        button.setImage(vector, for: .normal)
         return button
     }()
 
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "Settings"
-        titleLabel.textColor = Colors.background1
+        titleLabel.text = "SETTINGS"
+        titleLabel.textColor = Colors.textButtonColor1
+        titleLabel.font = Fonts.forButtons
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
-        titleLabel.backgroundColor = .white
+        titleLabel.backgroundColor = UIColor.clear
         return titleLabel
     }()
 
     private let soundLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "Sound "
+        titleLabel.text = "SOUND"
+        titleLabel.textColor = Colors.textButtonColor1
+        titleLabel.layer.cornerRadius = CGFloat(CornerRadius.forButtons)
+        titleLabel.layer.masksToBounds = true
+        titleLabel.font = Fonts.forButtons
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
-        titleLabel.backgroundColor = Colors.background1
+        titleLabel.backgroundColor = Colors.buttonColor1
         return titleLabel
     }()
 
     let soundButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = Colors.background1
+        button.backgroundColor = Colors.buttonColor1
+        button.layer.cornerRadius = CGFloat(CornerRadius.forButtons)
         button.setTitle("+", for: .normal)
         button.setTitleColor(Colors.black, for: .normal)
+
         return button
     }()
 
 
     private let vibroLabel: UILabel = {
         let label = UILabel()
-        label.text = "Vibro"
+        label.text = "VIBRO"
+        label.textColor = Colors.textButtonColor1
+        label.layer.cornerRadius = CGFloat(CornerRadius.forButtons)
+        label.layer.masksToBounds = true
+        label.font = Fonts.forButtons
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.backgroundColor = Colors.background1
+        label.backgroundColor = Colors.buttonColor1
         return label
     }()
 
     let vibroButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = Colors.background1
+        button.backgroundColor = Colors.buttonColor1
+        button.layer.cornerRadius = CGFloat(CornerRadius.forButtons)
         button.setTitle("+", for: .normal)
         button.setTitleColor(Colors.black, for: .normal)
         return button
@@ -66,18 +84,21 @@ class SettingsView: UIView {
 
     private let rateUsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Rate Us"
-        label.backgroundColor = Colors.background1
-        label.textColor = Colors.black
+        label.text = "RATE US"
+        label.backgroundColor = Colors.buttonColor1
+        label.layer.cornerRadius = CGFloat(CornerRadius.forButtons)
+        label.layer.masksToBounds = true
+        label.textColor = Colors.textButtonColor1
+        label.font = Fonts.forButtons
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.backgroundColor = .white
         return label
     }()
 
 override init(frame: CGRect) {
     super.init(frame: frame)
     self.backgroundColor = Colors.back1
+    self.addSubview(backgroundImage)
     self.addSubview(backToMainScreenButton)
     self.addSubview(titleLabel)
     self.addSubview(soundLabel)
@@ -101,45 +122,50 @@ override func layoutSubviews() {
 
     private func setConstraints() {
 
+        backgroundImage.pin
+            .width(500)
+            .height(844)
+            .hCenter()
+            .vCenter()
+
         backToMainScreenButton.pin
-            .size(60)
+            .size(60)//
             .left(20)
             .top(150)
         titleLabel.pin
             .after(of: backToMainScreenButton)
             .topLeft(to: backToMainScreenButton.anchor.topRight)
-            //.top(60)
             .marginLeft(20)
-            .height(60)
+            .height(53)//
             .width(200)
         soundLabel.pin
             .below(of: backToMainScreenButton)
-            .height(50)
-            .width(200)
+            .height(60)
+            .width(250)
             .marginTop(50)
-            .left(50)
+            .left(30)
         soundButton.pin
             .after(of: soundLabel)
-            .size(50)
-            .marginLeft(30)
+            .size(60)//
+            .marginLeft(16)//
             .topLeft(to: soundLabel.anchor.topRight)
         vibroLabel.pin
             .below(of: soundLabel)
-            .height(50)
-            .width(200)
+            .height(60)
+            .width(250)
             .marginTop(50)
-            .left(50)
+            .left(30)
         vibroButton.pin
             .after(of: vibroLabel)
-            .size(50)
-            .marginLeft(30)
+            .size(60)//
+            .marginLeft(16)//
             .topLeft(to: vibroLabel.anchor.topRight)
         rateUsLabel.pin
             .below(of: [vibroLabel, vibroButton])
             .marginTop(30)
             .topLeft(to: vibroLabel.anchor.bottomLeft)
             .topRight(to: vibroButton.anchor.bottomRight)
-            .height(50)
+            .height(60)
 
     }
 }
