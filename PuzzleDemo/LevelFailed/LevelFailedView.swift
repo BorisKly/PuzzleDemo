@@ -1,14 +1,13 @@
 //
-//  LevelCompletedView.swift
+//  LevelFailedView.swift
 //  PuzzleDemo
 //
-//  Created by Boris Klykavka on 24.02.2023.
+//  Created by Boris Klykavka on 25.02.2023.
 //
 
 import UIKit
-import PinLayout
 
-class LevelCompletedView: UIView {
+class LevelFailedView: UIView {
 
     let backgroundImage: UIImageView = {
         let view = UIImageView()
@@ -20,7 +19,6 @@ class LevelCompletedView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(backgroundImage)
-
     }
 
     required init?(coder: NSCoder) {

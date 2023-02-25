@@ -13,6 +13,7 @@ enum levelOneJumpTo {
     case backToLevels
     case reloadPuzzle
     case levelCompleted
+    case levelFailed
 }
 
 class LevelOneViewController: UIViewController {
@@ -21,19 +22,15 @@ class LevelOneViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
 
-    public var model = LevelOneModel()
+    let level1 = "level1.pdf"
 
-    var arrayOfImages: [UIImage] = []
+    var timer: Timer?
 
+    var arrayOf16Images: [UIImage] = []
 
-    //let level1 = UIImage(named: "level1.pdf")
-
-    private var timer: Timer?
 
 
     // MARK: - Privat Properties
-
-    //private let disposeBag = DisposeBag()
 
     private var mainView: LevelOneView? {
         return self.view as? LevelOneView
@@ -51,14 +48,32 @@ class LevelOneViewController: UIViewController {
         let codeView = LevelOneView(frame: CGRect.zero)
         self.view = codeView
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.arrayOfImages = PublicService().setRandomArrayOf16Images("level1.pdf")
-        
+
+        self.arrayOf16Images = PublicService.shared.setArrayOf16Images(level1, mixed: true)
+        print(arrayOf16Images.count)
+
         mainView?.mixedCollectionOfElementsOfPuzzle.delegate = self
         mainView?.mixedCollectionOfElementsOfPuzzle.dataSource = self
 
         bindView()
+    }
+
+    func whenAnyCellPressed() {
+        timer = Timer.scheduledTimer(withTimeInterval: 180.0, repeats: false) { timer in
+            self.attemptFailed()
+        }
+    }
+
+    private func attemptFailed() {
+        self.eventHandler?(.levelFailed)
+    }
+
+    private func attemptSucceded(){
+        timer?.invalidate()
+        self.eventHandler?(.levelCompleted)
     }
 
     func bindView() {

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9FFAF579500D242267E0B673 /* Pods_PuzzleDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD42698EE7E43D9F600F3945 /* Pods_PuzzleDemo.framework */; };
+		EC16DCCE29AA131F00FEA4FA /* LevelFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC16DCCD29AA131F00FEA4FA /* LevelFailedView.swift */; };
+		EC16DCD029AA133100FEA4FA /* LevelFailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC16DCCF29AA133100FEA4FA /* LevelFailedViewController.swift */; };
 		ECF862D429A8A986005971DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF862D329A8A986005971DE /* AppDelegate.swift */; };
 		ECF862D629A8A986005971DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF862D529A8A986005971DE /* SceneDelegate.swift */; };
 		ECF862DD29A8A98E005971DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECF862DC29A8A98E005971DE /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		685B2291B549FA12CDC69D42 /* Pods-PuzzleDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PuzzleDemo.debug.xcconfig"; path = "Target Support Files/Pods-PuzzleDemo/Pods-PuzzleDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		EC16DCCD29AA131F00FEA4FA /* LevelFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelFailedView.swift; sourceTree = "<group>"; };
+		EC16DCCF29AA133100FEA4FA /* LevelFailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelFailedViewController.swift; sourceTree = "<group>"; };
 		ECF862D029A8A986005971DE /* PuzzleDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuzzleDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF862D329A8A986005971DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECF862D529A8A986005971DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EC16DCCC29AA12F200FEA4FA /* LevelFailed */ = {
+			isa = PBXGroup;
+			children = (
+				EC16DCCF29AA133100FEA4FA /* LevelFailedViewController.swift */,
+				EC16DCCD29AA131F00FEA4FA /* LevelFailedView.swift */,
+			);
+			path = LevelFailed;
+			sourceTree = "<group>";
+		};
 		ECF862C729A8A986005971DE = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +145,7 @@
 				ECF862F729A8B087005971DE /* GameRules */,
 				ECF8630229A8D9B3005971DE /* Levels */,
 				ECF8631529A8FB2A005971DE /* LevelCompleted */,
+				EC16DCCC29AA12F200FEA4FA /* LevelFailed */,
 				ECF8630829A8E18F005971DE /* LevelOne */,
 				ECF862E729A8AA34005971DE /* Coordinator */,
 				ECF8630729A8E10E005971DE /* App */,
@@ -365,6 +379,7 @@
 				ECF862F229A8ADD0005971DE /* MainScreenViewController.swift in Sources */,
 				ECF862D629A8A986005971DE /* SceneDelegate.swift in Sources */,
 				ECF8630A29A8E8E3005971DE /* LevelOneViewController.swift in Sources */,
+				EC16DCCE29AA131F00FEA4FA /* LevelFailedView.swift in Sources */,
 				ECF8631929A8FD6C005971DE /* LevelCompletedView.swift in Sources */,
 				ECF862FF29A8CD0E005971DE /* SettingsViewController.swift in Sources */,
 				ECF8631029A8EE90005971DE /* LevelsViewCell.swift in Sources */,
@@ -372,6 +387,7 @@
 				ECF862F929A8B0FC005971DE /* GameRulesViewController.swift in Sources */,
 				ECF8631B29A8FE18005971DE /* LevelsViewController+.swift in Sources */,
 				ECF8632729A96888005971DE /* PublicService.swift in Sources */,
+				EC16DCD029AA133100FEA4FA /* LevelFailedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

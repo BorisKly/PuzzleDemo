@@ -12,7 +12,7 @@ class LevelOneView: UIView {
 
     let backgroundImage: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "image5.pdf")
+        view.image = UIImage(named: PublicService.shared.backgroundImageForAllDisplays )
         view.backgroundColor = .white
         return view
     }()
@@ -55,11 +55,11 @@ class LevelOneView: UIView {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collection.backgroundColor = .white
-        layout.minimumInteritemSpacing = 1
-        layout.minimumLineSpacing = 1
-        layout.itemSize = CGSize(width: 84.25, height: 84.25)
-        layout.scrollDirection = .vertical
-        collection.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collection.allowsMultipleSelection = true
+        layout.minimumInteritemSpacing = 2
+        layout.minimumLineSpacing = 2
+        layout.itemSize = CGSize(width: 83.0, height: 83.0)
+        //layout.itemSize = CGSize(width: 169.5, height: 169.5)
         return collection
     }()
 
@@ -81,7 +81,6 @@ class LevelOneView: UIView {
         self.addSubview(timer)
         self.addSubview(mixedCollectionOfElementsOfPuzzle)
         self.addSubview(correctPuzzle)
-
     }
 
     required init?(coder: NSCoder) {
@@ -105,7 +104,6 @@ class LevelOneView: UIView {
             .height(844)
             .hCenter()
             .vCenter()
-
         backToLevels.pin
             .size(35)
             .left(20)

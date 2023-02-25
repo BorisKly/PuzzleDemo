@@ -12,7 +12,7 @@ class SettingsView: UIView {
 
     let backgroundImage: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "image5.pdf")
+        view.image = UIImage(named: PublicService.shared.backgroundImageForAllDisplays)
         view.backgroundColor = .white
         return view
     }()

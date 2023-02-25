@@ -14,6 +14,7 @@ enum AvailableScreens {
     case gameRulesScreen
     case levelsScreen
     case levelCompletedScreen
+    case levelFailedScreen
     case firstLevelScreen(time: Int)
     case secondLevelScreen
     case thirdLevelScreen
@@ -106,9 +107,11 @@ final class ScreensCoordinator: Coordinator {
             case .backToLevels:
                 self?.navigationController.popViewController(animated: true)
             case .levelCompleted:
-               break// self?.jumpToScreen(.levelCompletedScreen)
+                self?.jumpToScreen(.levelCompletedScreen)
             case .reloadPuzzle:
                 break
+            case .levelFailed:
+                self?.jumpToScreen(.levelFailedScreen)
             }
         }
         self.navigationController.pushViewController(controller, animated: true)
@@ -118,6 +121,12 @@ final class ScreensCoordinator: Coordinator {
         let controller =
             LevelCompletedViewController.startVC()
 
+        self.navigationController.pushViewController(controller, animated: true)
+    }
+
+    private func levelFailed() {
+        let controller =
+            LevelFailedViewController.startVC()
         self.navigationController.pushViewController(controller, animated: true)
     }
 }
@@ -144,6 +153,8 @@ extension ScreensCoordinator {
             break
         case .levelCompletedScreen:
             self.levelCompleted()
+        case .levelFailedScreen:
+            self.levelFailed()
         }
     }
 }

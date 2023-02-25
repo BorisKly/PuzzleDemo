@@ -16,8 +16,6 @@ class LevelOneViewCell: UICollectionViewCell {
     private let imageCell: UIImageView = {
       let image = UIImageView()
          image.backgroundColor = Colors.background3
-//        let img = UIImage(named: "level1.pdf")
-//        image.image = img
         return image
     }()
 
