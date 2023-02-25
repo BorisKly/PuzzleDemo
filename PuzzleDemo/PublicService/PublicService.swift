@@ -26,8 +26,9 @@ class PublicService {  // force unwrap
     }
 
     private func splitImageOnFourEqualLines(image2D: UIImage) -> [UIImage] {
-        let imgWidth = image2D.size.width
-        let imgHeight = image2D.size.height / 4
+        guard let cgImage = image2D.cgImage else {return []}
+        let imgWidth = cgImage.width
+        let imgHeight = cgImage.height / 4
         var imgImages: [UIImage] = []
 
         let first = CGRect(x: 0, y: 0, width: imgWidth, height: imgHeight )
@@ -35,10 +36,10 @@ class PublicService {  // force unwrap
         let third = CGRect(x: 0, y: 2 * imgHeight, width: imgWidth, height: imgHeight )
         let fourth = CGRect(x: 0, y: 3 * imgHeight, width: imgWidth, height: imgHeight )
 
-        let firstH = image2D.cgImage?.cropping(to: first)
-        let secondH = image2D.cgImage?.cropping(to: second)
-        let thirdH = image2D.cgImage?.cropping(to: third)
-        let fourthH = image2D.cgImage?.cropping(to: fourth)
+        let firstH = cgImage.cropping(to: first)
+        let secondH = cgImage.cropping(to: second)
+        let thirdH = cgImage.cropping(to: third)
+        let fourthH = cgImage.cropping(to: fourth)
 
         imgImages.append(UIImage(cgImage: firstH!))
         imgImages.append(UIImage(cgImage: secondH!))
@@ -48,8 +49,9 @@ class PublicService {  // force unwrap
         return imgImages
     }
     private func splitImageOnFourEqualMiniSquers(image2D: UIImage) -> [UIImage] {
-        let imgWidth = image2D.size.width / 4
-        let imgHeight = image2D.size.height
+        guard let cgImage = image2D.cgImage else {return []}
+        let imgWidth = cgImage.width / 4
+        let imgHeight = cgImage.height
         var imgImages: [UIImage] = []
 
         let first = CGRect(x: 0, y: 0, width: imgWidth, height: imgHeight )
@@ -57,10 +59,10 @@ class PublicService {  // force unwrap
         let third = CGRect(x: 2 * imgWidth, y: 0, width: imgWidth, height: imgHeight )
         let fourth = CGRect(x: 3 * imgWidth, y: 0, width: imgWidth, height: imgHeight )
 
-        let firstH = image2D.cgImage?.cropping(to: first)
-        let secondH = image2D.cgImage?.cropping(to: second)
-        let thirdH = image2D.cgImage?.cropping(to: third)
-        let fourthH = image2D.cgImage?.cropping(to: fourth)
+        let firstH = cgImage.cropping(to: first)
+        let secondH = cgImage.cropping(to: second)
+        let thirdH = cgImage.cropping(to: third)
+        let fourthH = cgImage.cropping(to: fourth)
 
         imgImages.append(UIImage(cgImage: firstH!))
         imgImages.append(UIImage(cgImage: secondH!))
