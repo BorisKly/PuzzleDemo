@@ -35,7 +35,7 @@ class LevelCompletedView: UIView {
 
     }
 
-    private let timeLabel: UILabel = {
+    public let timeLabel: UILabel = {
         let label = UILabel()
         label.text = "TIME: ..."
         label.textColor = Colors.textButtonColor1
@@ -48,7 +48,7 @@ class LevelCompletedView: UIView {
         return label
     }()
 
-    private let bestTimeLabel: UILabel = {
+    public let bestTimeLabel: UILabel = {
         let label = UILabel()
         label.text = "BEST TIME: ..."
         label.textColor = Colors.textButtonColor1

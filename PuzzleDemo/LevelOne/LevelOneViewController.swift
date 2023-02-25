@@ -12,7 +12,7 @@ import RxCocoa
 enum levelOneJumpTo {
     case backToLevels
     case reloadPuzzle
-    case levelCompleted
+    case levelCompleted(time: Int)
     case levelFailed
 }
 
@@ -22,9 +22,25 @@ class LevelOneViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
 
-    let level1 = "level1.pdf"
+    var level: String {
+        "level\(levelNumber).pdf"
+    }
 
-    var time = 10 {
+    var levelName: String {
+        "LVL\(levelNumber).pdf"
+    }
+
+    var levelNumber: Int = 1 {
+        didSet {
+            time = totalTime
+        }
+    }
+
+    var  totalTime: Int {
+        60 * 3 + 10 - (10 * levelNumber)
+    }
+
+    var time = 60 * 3 {
         didSet { mainView?.timer.text = "\(time)" }
     }
     var timer: Timer?
@@ -43,7 +59,7 @@ class LevelOneViewController: UIViewController {
 
     // MARK: - Init Methods
 
-    public static func startVC() -> Self {
+    public static func startVC() -> Self {  
         return Self.init()
     }
 
@@ -56,7 +72,7 @@ class LevelOneViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.arrayOf16Images = PublicService.shared.setArrayOf16Images(level1, mixed: false)
+        self.arrayOf16Images = PublicService.shared.setArrayOf16Images(level, mixed: false)
 
         setTimer()
 
@@ -65,6 +81,8 @@ class LevelOneViewController: UIViewController {
         mainView?.mixedCollectionOfElementsOfPuzzle.delegate = self
         mainView?.mixedCollectionOfElementsOfPuzzle.dataSource = self
 
+        mainView?.correctPuzzle.image = UIImage(named: level)
+        mainView?.numberLevelLabelTitle.image = UIImage(named: levelName)
         bindView()
     }
 
@@ -92,7 +110,7 @@ class LevelOneViewController: UIViewController {
 
     private func attemptSucceded(){
         timer?.invalidate()
-        self.eventHandler?(.levelCompleted)
+        self.eventHandler?(.levelCompleted(time: totalTime - time))
     }
 
     private func bindView() {

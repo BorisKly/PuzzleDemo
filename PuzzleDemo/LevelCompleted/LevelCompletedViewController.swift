@@ -21,6 +21,7 @@ class LevelCompletedViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
 
+    var time: Int = 1
 
     private var mainView: LevelCompletedView? {
         return self.view as? LevelCompletedView
@@ -42,6 +43,13 @@ class LevelCompletedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let minutes =  time / 60
+        let seconds = time % 60
+        mainView?.timeLabel.text = "TIME: 0\(minutes) : \(seconds) "
+
+        mainView?.bestTimeLabel.text = "BEST TIME: 01 : 20 "
+
+
         bindView()
 
     }

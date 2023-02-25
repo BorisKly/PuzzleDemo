@@ -48,9 +48,9 @@ class MainScreenViewController: UIViewController {
     }
 
     func bindView() {
-        mainView?.gameRulesButton.rx.tap.bind(onNext: { [weak self] in
-            self?.eventHandler?(.toGameRules)
-        }).disposed(by: disposeBag)
+//        mainView?.gameRulesButton.rx.tap.bind(onNext: { [weak self] in
+//            self?.eventHandler?(.toGameRules)
+//        }).disposed(by: disposeBag)
 
         mainView?.settingsButton.rx.tap.bind(onNext: { [weak self] in
             self?.eventHandler?(.toSettings)
@@ -60,16 +60,5 @@ class MainScreenViewController: UIViewController {
             self?.eventHandler?(.toLevels)
         }).disposed(by: disposeBag)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

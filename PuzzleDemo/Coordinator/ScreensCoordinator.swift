@@ -13,13 +13,12 @@ enum AvailableScreens {
     case settingsScreen
     case gameRulesScreen
     case levelsScreen
-    case levelCompletedScreen
+    case levelCompletedScreen(time: Int, level: Int)
     case levelFailedScreen
-    case firstLevelScreen(time: Int)
-    case secondLevelScreen
-    case thirdLevelScreen
-
+    case levelScreen(number: Int)
 }
+
+
 final class ScreensCoordinator: Coordinator {
     // MARK: -
     // MARK: Constants
@@ -83,32 +82,33 @@ final class ScreensCoordinator: Coordinator {
     private func levelsScreen() {
         let controller =
             LevelsViewController.startVC()
-        let time = 10
+
         controller.eventHandler = {[weak self] event in
             switch event {
             case .toMain:
                 self?.navigationController.popViewController(animated: true)
             case .toLevelOne:
-                self?.jumpToScreen(.firstLevelScreen(time: time))
+                self?.jumpToScreen(.levelScreen(number: 1))
             case .toLevelTwo:
-                self?.jumpToScreen(.secondLevelScreen)
+                self?.jumpToScreen(.levelScreen(number: 2))
             case .toLevelThree:
-                self?.jumpToScreen(.thirdLevelScreen)
+                self?.jumpToScreen(.levelScreen(number: 3))
 
             }
         }
         self.navigationController.pushViewController(controller, animated: true)
     }
 
-    private func firstLevelScreen() {
+    private func levelScreen(level number: Int) {
         let controller =
             LevelOneViewController.startVC()
+        controller.levelNumber = number
         controller.eventHandler = {[weak self] event in
             switch event {
             case .backToLevels:
                 self?.navigationController.popViewController(animated: true)
-            case .levelCompleted:
-                self?.jumpToScreen(.levelCompletedScreen)
+            case .levelCompleted(let time):
+                self?.jumpToScreen(.levelCompletedScreen(time: time, level: number))
             case .reloadPuzzle:
                 break
             case .levelFailed:
@@ -118,18 +118,18 @@ final class ScreensCoordinator: Coordinator {
         self.navigationController.pushViewController(controller, animated: true)
     }
 
-    private func levelCompleted() {
+    private func levelCompleted(time: Int, currentLevel: Int) {
         let controller =
             LevelCompletedViewController.startVC()
-
+        controller.time = time
         controller.eventHandler = {[weak self] event in
             switch event {
             case .toLevelOne:
                 self?.navigationController.popViewController(animated: true)
             case .toLevels:
-                self?.jumpToScreen(.levelsScreen)
+                self?.jumpToScreen(.levelScreen(number: currentLevel))
             case .toLevelTwo:
-                self?.jumpToScreen(.secondLevelScreen)
+                self?.jumpToScreen(.levelScreen(number: currentLevel + 1))
             }
         }
 
@@ -151,18 +151,7 @@ final class ScreensCoordinator: Coordinator {
         self.navigationController.pushViewController(controller, animated: true)
     }
 
-    private func secondLevelScreen() {
-        let controller =
-             LevelTwoViewController.startVC()
 
-        self.navigationController.pushViewController(controller, animated: true)
-    }
-
-    private func thirdLevelScreen() {
-        let controller =
-             LevelThreeViewController.startVC()
-        self.navigationController.pushViewController(controller, animated: true)
-    }
 }
 // MARK: -
 // MARK: Extensions
@@ -179,14 +168,10 @@ extension ScreensCoordinator {
             self.gameRulesScreen()
         case .levelsScreen:
             self.levelsScreen()
-        case .firstLevelScreen:
-            self.firstLevelScreen()
-        case .secondLevelScreen:
-            self.secondLevelScreen()
-        case .thirdLevelScreen:
-            self.thirdLevelScreen()
-        case .levelCompletedScreen:
-            self.levelCompleted()
+        case .levelScreen(let number):
+            self.levelScreen(level: number)
+        case .levelCompletedScreen(let data):
+            self.levelCompleted(time: data.time, currentLevel: data.level)
         case .levelFailedScreen:
             self.levelFailed()
         }

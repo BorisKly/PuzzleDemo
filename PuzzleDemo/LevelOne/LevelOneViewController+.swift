@@ -38,7 +38,7 @@ extension LevelOneViewController: UICollectionViewDelegate, UICollectionViewData
             collectionView.reloadData()
 
             if imageOrder == correctOrder {
-                self.eventHandler?(.levelCompleted)
+                self.eventHandler?(.levelCompleted(time: totalTime - time ))
             }
         }
 

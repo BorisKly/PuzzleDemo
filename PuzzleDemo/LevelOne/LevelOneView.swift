@@ -35,7 +35,7 @@ class LevelOneView: UIView {
         return button
     }()
 
-    private let numberLevelLabelTitle: UIImageView = {
+    public let numberLevelLabelTitle: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "LVL1.pdf")
         return image
@@ -62,7 +62,7 @@ class LevelOneView: UIView {
         return collection
     }()
 
-    private let correctPuzzle: UIImageView = {
+    public let correctPuzzle: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "level1.pdf")
         view.backgroundColor = .white
