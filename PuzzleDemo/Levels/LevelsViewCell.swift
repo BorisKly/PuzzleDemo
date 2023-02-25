@@ -16,8 +16,8 @@ class LevelsViewCell: UICollectionViewCell {
     private let imageCell: UIImageView = {
       let image = UIImageView()
         image.backgroundColor = Colors.background3
-        let img = UIImage(named: "image21.pdf")
-        image.image = img
+//        let img = UIImage(named: "image21.pdf")
+//        image.image = img
         return image
     }()
 

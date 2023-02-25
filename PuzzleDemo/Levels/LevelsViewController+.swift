@@ -14,6 +14,11 @@ extension LevelsViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+
+        let image = UIImage(named: model.arrayOfLevels[indexPath.row])
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100.0, height: 100.0))
+        imageView.image = image
+        cell.contentView.addSubview(imageView)
         return cell
     }
 
@@ -23,9 +28,9 @@ extension LevelsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         case 0:
             self.eventHandler?(.toLevelOne)
         case 1:
-            break//self.eventHandler?(.toLevelTwo)
+            self.eventHandler?(.toLevelTwo)
         case 2:
-            break //self.eventHandler?(.toLevelThree)
+            self.eventHandler?(.toLevelThree)
         default:
             break
         }

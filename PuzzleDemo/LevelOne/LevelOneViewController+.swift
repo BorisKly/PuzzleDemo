@@ -7,7 +7,7 @@
 
 import UIKit
 
-   var selectedItems: [IndexPath]?
+ //  var selectedItems: [IndexPath]?
 
 extension LevelOneViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -16,11 +16,10 @@ extension LevelOneViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LevelOneCell", for: indexPath)
-        let image: UIImage = arrayOf16Images[indexPath.row]
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 84.25, height: 84.25))
+        let image: UIImage = arrayOf16Images[imageOrder[indexPath.row]]
+
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 82.75, height: 82.75))
         imageView.image = image
-       // imageView.frame = CGRect(x: 0, y: 0, width: 84.25, height: 84.25)
-       // imageView.frame = CGRect(x: 0, y: 0, width: 169.25, height: 169.25)
         cell.contentView.addSubview(imageView)
         return cell
     }
@@ -28,18 +27,23 @@ extension LevelOneViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let cell = collectionView.cellForItem(at: indexPath)
-        if ((cell?.isSelected) != nil) {cell?.layer.shadowOpacity = 0.5 }
+        cell?.layer.shadowOpacity = (cell?.isSelected ?? false) ? 0.5 : 1.0
 
-        selectedItems = collectionView.indexPathsForSelectedItems
+        let selectedItems = collectionView.indexPathsForSelectedItems
 
         if selectedItems?.count == 2 {
-
+            imageOrder.swapAt(selectedItems?.first?.row ?? 0, selectedItems?.last?.row ?? 0)
             selectedItems?.forEach({ collectionView.deselectItem(at: $0, animated: true)
             })
+            collectionView.reloadData()
+
+            if imageOrder == correctOrder {
+                self.eventHandler?(.levelCompleted)
+            }
         }
 
         print(indexPath.row)
     }
 
-   
+
 }

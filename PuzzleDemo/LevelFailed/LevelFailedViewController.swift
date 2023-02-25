@@ -6,8 +6,19 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
+enum failScreenJumpTo {
+    case toLevels
+    case toLevelOne
+}
 
 class LevelFailedViewController: UIViewController {
+
+    public var eventHandler: ((failScreenJumpTo)->())?
+
+    private let disposeBag = DisposeBag()
 
     private var mainView: LevelFailedView? {
         return self.view as? LevelFailedView
@@ -29,6 +40,18 @@ class LevelFailedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindView()
+    }
 
+
+
+    func bindView() {
+        mainView?.backToLevelsButton.rx.tap.bind(onNext: { [weak self] in
+            self?.eventHandler?(.toLevels)
+        }).disposed(by: disposeBag)
+
+        mainView?.reloadLevel.rx.tap.bind(onNext: { [weak self] in
+            self?.eventHandler?(.toLevelOne)
+        }).disposed(by: disposeBag)
     }
 }

@@ -91,9 +91,10 @@ final class ScreensCoordinator: Coordinator {
             case .toLevelOne:
                 self?.jumpToScreen(.firstLevelScreen(time: time))
             case .toLevelTwo:
-                break
+                self?.jumpToScreen(.secondLevelScreen)
             case .toLevelThree:
-                break
+                self?.jumpToScreen(.thirdLevelScreen)
+
             }
         }
         self.navigationController.pushViewController(controller, animated: true)
@@ -121,12 +122,45 @@ final class ScreensCoordinator: Coordinator {
         let controller =
             LevelCompletedViewController.startVC()
 
+        controller.eventHandler = {[weak self] event in
+            switch event {
+            case .toLevelOne:
+                self?.navigationController.popViewController(animated: true)
+            case .toLevels:
+                self?.jumpToScreen(.levelsScreen)
+            case .toLevelTwo:
+                self?.jumpToScreen(.secondLevelScreen)
+            }
+        }
+
         self.navigationController.pushViewController(controller, animated: true)
     }
 
     private func levelFailed() {
         let controller =
             LevelFailedViewController.startVC()
+
+        controller.eventHandler = {[weak self] event in
+            switch event {
+            case .toLevelOne:
+                self?.navigationController.popViewController(animated: true)
+            case .toLevels:
+                self?.jumpToScreen(.levelsScreen)
+            }
+        }
+        self.navigationController.pushViewController(controller, animated: true)
+    }
+
+    private func secondLevelScreen() {
+        let controller =
+             LevelTwoViewController.startVC()
+
+        self.navigationController.pushViewController(controller, animated: true)
+    }
+
+    private func thirdLevelScreen() {
+        let controller =
+             LevelThreeViewController.startVC()
         self.navigationController.pushViewController(controller, animated: true)
     }
 }
@@ -148,9 +182,9 @@ extension ScreensCoordinator {
         case .firstLevelScreen:
             self.firstLevelScreen()
         case .secondLevelScreen:
-            break
+            self.secondLevelScreen()
         case .thirdLevelScreen:
-            break
+            self.thirdLevelScreen()
         case .levelCompletedScreen:
             self.levelCompleted()
         case .levelFailedScreen:

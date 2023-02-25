@@ -43,7 +43,7 @@ class LevelOneView: UIView {
 
     public let timer: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "Levels"
+        titleLabel.text = ""
         titleLabel.textColor = Colors.background1
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
@@ -56,10 +56,9 @@ class LevelOneView: UIView {
         let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collection.backgroundColor = .white
         collection.allowsMultipleSelection = true
-        layout.minimumInteritemSpacing = 2
-        layout.minimumLineSpacing = 2
-        layout.itemSize = CGSize(width: 83.0, height: 83.0)
-        //layout.itemSize = CGSize(width: 169.5, height: 169.5)
+        layout.minimumInteritemSpacing = 3
+        layout.minimumLineSpacing = 3
+        layout.itemSize = CGSize(width: 82.75, height: 82.75)
         return collection
     }()
 

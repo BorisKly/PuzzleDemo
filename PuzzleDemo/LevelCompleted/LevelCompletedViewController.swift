@@ -6,8 +6,21 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
+enum complitedScreenJumpTo {
+    case toLevels
+    case toLevelOne
+    case toLevelTwo
+}
 
 class LevelCompletedViewController: UIViewController {
+
+    public var eventHandler: ((complitedScreenJumpTo)->())?
+
+    private let disposeBag = DisposeBag()
+
 
     private var mainView: LevelCompletedView? {
         return self.view as? LevelCompletedView
@@ -29,6 +42,21 @@ class LevelCompletedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindView()
 
+    }
+
+    func bindView() {
+        mainView?.backToLevelsButton.rx.tap.bind(onNext: { [weak self] in
+            self?.eventHandler?(.toLevels)
+        }).disposed(by: disposeBag)
+
+        mainView?.reloadLevel.rx.tap.bind(onNext: { [weak self] in
+            self?.eventHandler?(.toLevelOne)
+        }).disposed(by: disposeBag)
+
+        mainView?.toLevelTwo.rx.tap.bind(onNext: { [weak self] in
+            self?.eventHandler?(.toLevelTwo)
+        }).disposed(by: disposeBag)
     }
 }
