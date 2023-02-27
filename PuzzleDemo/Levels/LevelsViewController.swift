@@ -14,14 +14,19 @@ enum levelsJumpTo {
     case toLevelOne
     case toLevelTwo
     case toLevelThree
-
 }
 
 class LevelsViewController: UIViewController {
 
+    // MARK: Public Properties
+
     public var eventHandler: ((levelsJumpTo)->())?
 
     public let model = LevelsViewModel()
+
+    public static func startVC() -> Self {
+        return Self.init()
+    }
 
     // MARK: - Privat Properties
 
@@ -29,12 +34,6 @@ class LevelsViewController: UIViewController {
 
     private var mainView: LevelsView? {
         return self.view as? LevelsView
-    }
-
-    // MARK: - Init Methods
-
-    public static func startVC() -> Self {
-        return Self.init()
     }
 
     // MARK: - Override Methods
@@ -51,9 +50,9 @@ class LevelsViewController: UIViewController {
         bindView()
     }
 
+    // MARK: - Private Methods
 
-
-    func bindView() {
+    private func bindView() {
         mainView?.backToMainScreenButton.rx.tap.bind(onNext: { [weak self] in
             self?.eventHandler?(.toMain)
         }).disposed(by: disposeBag)

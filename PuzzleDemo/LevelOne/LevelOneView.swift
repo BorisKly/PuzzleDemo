@@ -10,46 +10,18 @@ import PinLayout
 
 class LevelOneView: UIView {
 
-    let backgroundImage: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: PublicService.shared.backgroundImageForAllDisplays )
-        view.backgroundColor = .white
-        return view
-    }()
+    let leftVectorImg = "Vector.pdf"
+    let reloadLevelImg = "Vector2.pdf"
 
-    let backToLevels: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .white
-        let vector = UIImage(named: "Vector.pdf")
-        button.setImage(vector, for: .normal)
-        button.setTitleColor(Colors.background1, for: .normal)
-        return button
-    }()
+    private let parentView = UIImageView()
 
-    let reloadLevel: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .white
-        let vector = UIImage(named: "Vector2.pdf")
-        button.setImage(vector, for: .normal)
-        button.setTitleColor(Colors.background1, for: .normal)
-        return button
-    }()
+    public let backToLevelsButton = UIButton()
+    public let reloadLevelButton =  UIButton()
 
-    public let numberLevelLabelTitle: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "LVL1.pdf")
-        return image
-    }()
+    public let numberLevelLabelTitle = UILabel()
+    public let timer = UILabel()
 
-    public let timer: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.text = ""
-        titleLabel.textColor = Colors.background1
-        titleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 0
-        titleLabel.backgroundColor = .white
-        return titleLabel
-    }()
+    public let correctPuzzle = UIImageView()
 
     public let mixedCollectionOfElementsOfPuzzle: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -62,20 +34,14 @@ class LevelOneView: UIView {
         return collection
     }()
 
-    public let correctPuzzle: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "level1.pdf")
-        view.backgroundColor = .white
-        return view
-    }()
-
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.registerCollection()
-        self.addSubview(backgroundImage)
-        self.addSubview(backToLevels)
-        self.addSubview(reloadLevel)
+
+        self.addSubview(parentView)
+        self.sendSubviewToBack(parentView)
+        self.addSubview(backToLevelsButton)
+        self.addSubview(reloadLevelButton)
         self.addSubview(numberLevelLabelTitle)
         self.addSubview(timer)
         self.addSubview(mixedCollectionOfElementsOfPuzzle)
@@ -88,50 +54,67 @@ class LevelOneView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        setImagesToLabels()
+        setButtons()
+        setLabels()
         setConstraints()
     }
 
-    // MARK: - Public Methods
+    // MARK: - Private Methods
+
+    private func setButtons() {
+        backToLevelsButton.setUIButtonRound(image: leftVectorImg)
+        reloadLevelButton.setUIButtonRound(image: reloadLevelImg)
+    }
+
+    private func setLabels() {
+        timer.setUILabel(text: "")
+    }
+
+    private func setImagesToLabels() {
+        parentView.image = UIImage(named: PublicService.shared.backgroundImageForAllDisplays )
+      //  correctPuzzle.image = UIImage(named: correctPuzzleImage)
+    }
 
     private func registerCollection() {
         self.mixedCollectionOfElementsOfPuzzle.register(LevelOneViewCell.self, forCellWithReuseIdentifier: "LevelOneCell")
     }
 
     private func setConstraints() {
-        backgroundImage.pin
+        parentView.pin
             .width(500)
             .height(844)
             .hCenter()
             .vCenter()
-        backToLevels.pin
-            .size(35)
+        backToLevelsButton.pin
+            .size(50)
+            .top(100)
             .left(20)
-            .top(74) //
-        reloadLevel.pin
-            .size(35)
-            .after(of: backToLevels)
-            .topLeft(to: backToLevels.anchor.topRight)
+        reloadLevelButton.pin
+            .size(50)
+            .topLeft(to: backToLevelsButton.anchor.topRight)
             .marginLeft(10)
         numberLevelLabelTitle.pin
-            .topLeft(to: reloadLevel.anchor.topRight)
-            .height(35) //
-            .width(100) //
-            .marginLeft(10)
-        timer.pin
-            .topLeft(to: numberLevelLabelTitle.anchor.topRight)
-            .height(35)
+            .height(50)
             .width(100)
             .marginLeft(10)
+            .topLeft(to: reloadLevelButton.anchor.topRight)
+        timer.pin
+            .height(50)
+            .width(100)
+            .marginLeft(10)
+            .topLeft(to: numberLevelLabelTitle.anchor.topRight)
         mixedCollectionOfElementsOfPuzzle.pin
-            .below(of: backToLevels)
-            .marginTop(40) //
-            .size(340) //
+            .below(of: backToLevelsButton)
+            .marginTop(30)
+            .width(340)
+            .height(340)
             .hCenter()
         correctPuzzle.pin
             .below(of: mixedCollectionOfElementsOfPuzzle)
-            .marginTop(50)
-            .height(226) //
-            .width(226.14) //
+            .size(220)
+            .marginTop(30)
             .hCenter()
-}
+        
+    }
 }

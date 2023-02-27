@@ -22,6 +22,8 @@ class LevelOneViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
 
+    private let model = LevelOneModel()
+
     var level: String {
         "level\(levelNumber).pdf"
     }
@@ -82,7 +84,8 @@ class LevelOneViewController: UIViewController {
         mainView?.mixedCollectionOfElementsOfPuzzle.dataSource = self
 
         mainView?.correctPuzzle.image = UIImage(named: level)
-        mainView?.numberLevelLabelTitle.image = UIImage(named: levelName)
+        mainView?.numberLevelLabelTitle.setUILabel(text: "LVL-\(levelNumber)")
+
         bindView()
     }
 
@@ -115,8 +118,9 @@ class LevelOneViewController: UIViewController {
 
     private func bindView() {
 
-        mainView?.backToLevels.rx.tap
+        mainView?.backToLevelsButton.rx.tap
             .bind(onNext: { [weak self] in
+                self?.timer?.invalidate()
             self?.eventHandler?(.backToLevels)
         }).disposed(by: disposeBag)
 

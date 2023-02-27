@@ -10,31 +10,9 @@ import PinLayout
 
 class LevelsView: UIView {
 
-    let backgroundImage: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: PublicService.shared.backgroundImageForAllDisplays)
-        view.backgroundColor = .white
-        return view
-    }()
+    let leftVector = "Vector.pdf"
 
-    public let backToMainScreenButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .white
-        let vector = UIImage(named: "Vector.pdf")
-        button.setImage(vector, for: .normal)
-        return button
-    }()
-
-    private let levelsLabelTitle: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.text = "LEVELS"
-        titleLabel.textColor = Colors.textButtonColor1
-        titleLabel.font = Fonts.forButtons
-        titleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 0
-       // titleLabel.backgroundColor = .white
-        return titleLabel
-    }()
+    public let backToMainScreenButton = UIButton()
 
     public let collectionOfLevels: UICollectionView = {
         let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -48,13 +26,22 @@ class LevelsView: UIView {
         return collection
     }()
 
+    private let parentView = UIImageView()
+    private let levelsLabelTitle = UILabel()
+    private let stackViewLevels = UIStackView()
+    private let verticalStackView = UIStackView()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
+
+        self.addSubview(parentView)
+        parentView.image = UIImage(named: PublicService.shared.backgroundImageForAllDisplays)
+        self.sendSubviewToBack(parentView)
+
         self.registerCollection()
-        self.addSubview(backgroundImage)
-        self.addSubview(backToMainScreenButton)
-        self.addSubview(levelsLabelTitle)
-        self.addSubview(collectionOfLevels)
+
+        self.addSubview(parentView)
+        self.addSubview(verticalStackView)
     }
 
     required init?(coder: NSCoder) {
@@ -63,10 +50,44 @@ class LevelsView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        setLabelsButtons()
+        setStackViews()
         setConstraints()
     }
 
     // MARK: - Private Methods
+    private func setLabelsButtons () {
+        levelsLabelTitle.setUILabel(text: "LEVELS")
+        backToMainScreenButton.setUIButtonRound(image: leftVector)
+    }
+
+    private func setStackViews() {
+
+        stackViewLevels.addArrangedSubview(backToMainScreenButton)
+        stackViewLevels.addArrangedSubview(levelsLabelTitle)
+        
+        verticalStackView.addArrangedSubview(stackViewLevels)
+        verticalStackView.addArrangedSubview(collectionOfLevels)
+
+        stackViewLevels.axis = .horizontal
+        stackViewLevels.alignment = .center
+        stackViewLevels.distribution = .fillEqually
+        stackViewLevels.spacing = 10
+
+        stackViewLevels.translatesAutoresizingMaskIntoConstraints = false
+        backToMainScreenButton.translatesAutoresizingMaskIntoConstraints = false
+
+        stackViewLevels.pin.top().left().right().bottom()
+        backToMainScreenButton.pin
+            .height(100)
+            .width(100)
+
+
+        verticalStackView.axis = .vertical
+        verticalStackView.alignment = .fill
+        verticalStackView.distribution = .fill
+        verticalStackView.spacing = 30
+    }
 
     private func registerCollection() {
         self.collectionOfLevels.register(LevelsViewCell.self, forCellWithReuseIdentifier: "Cell")
@@ -74,26 +95,16 @@ class LevelsView: UIView {
 
     private func setConstraints() {
 
-        backgroundImage.pin
+        parentView.pin
             .width(500)
             .height(844)
             .hCenter()
             .vCenter()
-        backToMainScreenButton.pin
-            .size(60)
-            .left(20)
-            .top(150)
-        levelsLabelTitle.pin
-            .after(of: backToMainScreenButton)
-            .topLeft(to: backToMainScreenButton.anchor.topRight)
-            .marginLeft(20)
-            .height(60)
-            .width(200)
-        collectionOfLevels.pin
-            .below(of: backToMainScreenButton)
-            .height(420)
-            .width(315)
-            .marginTop(50)
+        verticalStackView.pin
+            .top(100)
+            .width(330)
+            .height(600)
             .hCenter()
-}
+
+    }
 }

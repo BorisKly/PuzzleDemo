@@ -7,5 +7,6 @@
 
 import Foundation
 
-struct LevelOneModel {
+class LevelOneModel {
+
 }

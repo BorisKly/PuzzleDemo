@@ -10,7 +10,6 @@ import PinLayout
 
 class LevelsViewCell: UICollectionViewCell {
 
-    // MARK: -
     // MARK: Public Properties
 
     private let imageCell: UIImageView = {

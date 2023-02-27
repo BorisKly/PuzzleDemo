@@ -15,6 +15,7 @@
 		EC16DCE129ACD4C600FEA4FA /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC16DCE029ACD4C600FEA4FA /* SettingsModel.swift */; };
 		EC16DCE329ACD4ED00FEA4FA /* VectorsImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC16DCE229ACD4ED00FEA4FA /* VectorsImages.swift */; };
 		EC16DCE529ACD89600FEA4FA /* UIStackView+standart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC16DCE429ACD89600FEA4FA /* UIStackView+standart.swift */; };
+		EC16DCE829AD357400FEA4FA /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC16DCE729AD357400FEA4FA /* ExampleViewController.swift */; };
 		ECF862D429A8A986005971DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF862D329A8A986005971DE /* AppDelegate.swift */; };
 		ECF862D629A8A986005971DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF862D529A8A986005971DE /* SceneDelegate.swift */; };
 		ECF862DD29A8A98E005971DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECF862DC29A8A98E005971DE /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		EC16DCE029ACD4C600FEA4FA /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		EC16DCE229ACD4ED00FEA4FA /* VectorsImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorsImages.swift; sourceTree = "<group>"; };
 		EC16DCE429ACD89600FEA4FA /* UIStackView+standart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+standart.swift"; sourceTree = "<group>"; };
+		EC16DCE729AD357400FEA4FA /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		ECF862D029A8A986005971DE /* PuzzleDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuzzleDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF862D329A8A986005971DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECF862D529A8A986005971DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		EC16DCE629AD351100FEA4FA /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				EC16DCE729AD357400FEA4FA /* ExampleViewController.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
 		ECF862C729A8A986005971DE = {
 			isa = PBXGroup;
 			children = (
@@ -163,14 +173,15 @@
 		ECF862D229A8A986005971DE /* PuzzleDemo */ = {
 			isa = PBXGroup;
 			children = (
+				EC16DCE629AD351100FEA4FA /* Example */,
 				ECF8632529A96864005971DE /* PublicService */,
 				ECF862F029A8AD9B005971DE /* MainScreen */,
 				ECF862FD29A8CCF2005971DE /* Settings */,
 				ECF862F729A8B087005971DE /* GameRules */,
 				ECF8630229A8D9B3005971DE /* Levels */,
+				ECF8630829A8E18F005971DE /* LevelOne */,
 				ECF8631529A8FB2A005971DE /* LevelCompleted */,
 				EC16DCCC29AA12F200FEA4FA /* LevelFailed */,
-				ECF8630829A8E18F005971DE /* LevelOne */,
 				ECF862E729A8AA34005971DE /* Coordinator */,
 				ECF8630729A8E10E005971DE /* App */,
 				EC16DCDB29ACBD2300FEA4FA /* Extensions */,
@@ -386,6 +397,7 @@
 				ECF8631E29A90649005971DE /* LevelOneViewCell.swift in Sources */,
 				ECF862EF29A8AAE2005971DE /* AppConfigurator.swift in Sources */,
 				ECF8630E29A8EA0C005971DE /* LevelOneModel.swift in Sources */,
+				EC16DCE829AD357400FEA4FA /* ExampleViewController.swift in Sources */,
 				ECF8630629A8D9FA005971DE /* LevelsView.swift in Sources */,
 				ECF8630C29A8E8F4005971DE /* LevelOneView.swift in Sources */,
 				ECF862F629A8AE5A005971DE /* Colors.swift in Sources */,

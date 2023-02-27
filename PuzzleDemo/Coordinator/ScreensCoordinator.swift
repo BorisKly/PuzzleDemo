@@ -16,6 +16,7 @@ enum AvailableScreens {
     case levelCompletedScreen(time: Int, level: Int)
     case levelFailedScreen
     case levelScreen(number: Int)
+    case example
 }
 
 
@@ -151,6 +152,12 @@ final class ScreensCoordinator: Coordinator {
         self.navigationController.pushViewController(controller, animated: true)
     }
 
+    func example() {
+        let controller =
+            ExampleViewController.startVC()
+        self.navigationController.pushViewController(controller, animated: true)
+    }
+
 
 }
 // MARK: -
@@ -174,6 +181,8 @@ extension ScreensCoordinator {
             self.levelCompleted(time: data.time, currentLevel: data.level)
         case .levelFailedScreen:
             self.levelFailed()
+        case .example:
+            self.example()
         }
     }
 }

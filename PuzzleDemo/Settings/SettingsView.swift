@@ -7,7 +7,6 @@
 import UIKit
 import PinLayout
 
-
 class SettingsView: UIView {
 
     let leftVector = "Vector.pdf"
@@ -24,6 +23,7 @@ class SettingsView: UIView {
     let stackViewSound = UIStackView()
     let stackViewVibro = UIStackView()
     let stackViewSettings = UIStackView()
+
     let verticalStackView = UIStackView()
 
 override init(frame: CGRect) {
@@ -51,6 +51,8 @@ override func layoutSubviews() {
     setStackViews()
     setSubviewsForStacks()
     setConstraints()
+    setConstrInStack()
+
 }
 
 // MARK: - Private Methods
@@ -69,7 +71,6 @@ override func layoutSubviews() {
         verticalStackView.addArrangedSubview(stackViewSound)
         verticalStackView.addArrangedSubview(stackViewVibro)
         verticalStackView.addArrangedSubview(rateUsLabel)
-
     }
 
     private func setUILabels() {
@@ -90,6 +91,17 @@ override func layoutSubviews() {
         stackViewVibro.setStackViewHorizontal(spacing: 20)
         stackViewSettings.setStackViewHorizontal(spacing: 20)
         verticalStackView.setStackViewVertical(spacing: 30)
+    }
+
+    func setConstrInStack() {
+        soundButton.pin
+            .size(50)
+        vibroButton.pin
+            .size(50)
+        soundLabel.pin
+            .height(50)
+        vibroLabel.pin
+            .height(50)
     }
 
     private func setConstraints() {
