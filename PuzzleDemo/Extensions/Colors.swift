@@ -9,6 +9,8 @@ import UIKit
 
 public enum Colors {
 
+    static let buttonColorBackgroundWhite = UIColor.white
+
     static let buttonColor1 = UIColor(red: 1, green: 0.196, blue: 0.816, alpha: 1)
     static let textButtonColor1 = UIColor.white
 

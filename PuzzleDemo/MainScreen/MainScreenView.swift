@@ -10,72 +10,37 @@ import UIKit
 
 class MainScreenView: UIView {
 
-    let backgroundImage: UIImageView = {
+    var candy = "image13.pdf"
+
+    let parentView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: PublicService.shared.backgroundImageForAllDisplays)
         return view
     }()
 
+    private let candyImage = UIImageView()
 
-    private let mainImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "image13.pdf")
-        return image
-    }()
+    public let playButton = UIButton()
+    public let gameRulesButton = UIButton()
+    public let settingsButton = UIButton()
+    public let privacyPolicyButton = UIButton()
 
-    let playButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = Colors.buttonColor1
-        button.setTitleColor(Colors.textButtonColor1, for: .normal)
-        button.layer.cornerRadius = CGFloat(CornerRadius.forButtons)
-        button.titleLabel?.font = Fonts.forButtons
-        button.setTitle("PLAY", for: .normal)
-        button.setTitle("pressed", for: .highlighted)
-        return button
-    }()
-
-    let gameRulesButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = Colors.buttonColor1
-        button.setTitleColor(Colors.textButtonColor1, for: .normal)
-        button.layer.cornerRadius = CGFloat(CornerRadius.forButtons)
-        button.titleLabel?.font = Fonts.forButtons
-        button.setTitle("GAMERULES", for: .normal)
-        button.setTitle("pressed", for: .highlighted)
-        return button
-    }()
-
-    let settingsButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = Colors.buttonColor1
-        button.setTitleColor(Colors.textButtonColor1, for: .normal)
-        button.layer.cornerRadius = CGFloat(CornerRadius.forButtons)
-        button.titleLabel?.font = Fonts.forButtons
-        button.setTitle("SETTINGS", for: .normal)
-        button.setTitle("pressed", for: .highlighted)
-        return button
-    }()
-
-    let privacyPolicyButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = Colors.buttonColor1
-        button.setTitleColor(Colors.textButtonColor1, for: .normal)
-        button.layer.cornerRadius = CGFloat(CornerRadius.forButtons)
-        button.titleLabel?.font = Fonts.forButtons
-        button.setTitle("PRIVACY POLICY", for: .normal)
-        button.setTitle("pressed", for: .highlighted)
-        return button
+    let stackViewOfButtons: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .fill
+        stack.distribution = .fillEqually
+        stack.spacing = 10
+        return stack
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(backgroundImage)
-        self.addSubview(mainImage)
-        self.addSubview(playButton)
-        self.addSubview(gameRulesButton)
-        self.addSubview(settingsButton)
-        self.addSubview(privacyPolicyButton)
-
+        self.addSubview(parentView)
+        self.addSubview(candyImage)
+        self.addSubview(stackViewOfButtons)
+        self.sendSubviewToBack(parentView)
+        // self.bringSubviewToFront(<#T##view: UIView##UIView#>)
     }
 
     required init?(coder: NSCoder) {
@@ -84,48 +49,53 @@ class MainScreenView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        addButtonsToStackView()
+        setButtons()
+        setImagesToLabels()
         setConstraints()
     }
 
-    // MARK: - Public Methods
+    // MARK: - Private Methods
+
+    private func setImagesToLabels() {
+        candyImage.image = UIImage(named: candy)
+    }
+
+    private func addButtonsToStackView() {
+        stackViewOfButtons.addArrangedSubview(playButton)
+        stackViewOfButtons.addArrangedSubview(gameRulesButton)
+        stackViewOfButtons.addArrangedSubview(settingsButton)
+        stackViewOfButtons.addArrangedSubview(privacyPolicyButton)
+
+        stackViewOfButtons.setCustomSpacing(5, after: playButton)
+    }
+
+    private func setButtons() {
+        playButton.setUIButton(title: "PLAY", titleHighlited: "pressed")
+
+        settingsButton.setUIButton(title: "SETTINGS", titleHighlited: "pressed")
+        gameRulesButton.setUIButton(title: "GAMERULES", titleHighlited: "pressed")
+        privacyPolicyButton.setUIButton(title: "PRIVACY POLICY", titleHighlited: "pressed")
+    }
 
     private func setConstraints() {
-
-        backgroundImage.pin
+        parentView.pin
             .width(500)
             .height(800)
             .hCenter()
             .vCenter()
         
-        mainImage.pin
-            .width(350)//
+        candyImage.pin
+            .width(330)//
             .height(233)//
             .top(100)
             .hCenter()
 
-        playButton.pin
-            .below(of: mainImage)
-            .height(70)//
-            .width(350)//
-            .marginTop(20)
-            .hCenter()
-        gameRulesButton.pin
-            .below(of: playButton)
-            .height(70)//
-            .width(350)//
-            .marginTop(20)
-            .hCenter()
-        settingsButton.pin
-            .below(of: gameRulesButton)
-            .height(70)//
-            .width(350)//
-            .marginTop(20)
-            .hCenter()
-        privacyPolicyButton.pin
-            .below(of: settingsButton)
-            .height(70)//
-            .width(350)//
-            .marginTop(20)
+        stackViewOfButtons.pin
+            .below(of: candyImage)
+            .marginTop(30)
+            .width(330)
+            .height(280)
             .hCenter()
     }
 }

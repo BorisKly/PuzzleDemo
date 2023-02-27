@@ -24,7 +24,6 @@ class MainScreenViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
 
-
     private var mainView: MainScreenView? {
         return self.view as? MainScreenView
     }
@@ -47,7 +46,9 @@ class MainScreenViewController: UIViewController {
         bindView()
     }
 
-    func bindView() {
+    // MARK: - Private Methods
+
+    private func bindView() {
 //        mainView?.gameRulesButton.rx.tap.bind(onNext: { [weak self] in
 //            self?.eventHandler?(.toGameRules)
 //        }).disposed(by: disposeBag)

@@ -10,6 +10,11 @@
 		9FFAF579500D242267E0B673 /* Pods_PuzzleDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD42698EE7E43D9F600F3945 /* Pods_PuzzleDemo.framework */; };
 		EC16DCCE29AA131F00FEA4FA /* LevelFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC16DCCD29AA131F00FEA4FA /* LevelFailedView.swift */; };
 		EC16DCD029AA133100FEA4FA /* LevelFailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC16DCCF29AA133100FEA4FA /* LevelFailedViewController.swift */; };
+		EC16DCDD29ACBD7E00FEA4FA /* UIButton+standart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC16DCDC29ACBD7D00FEA4FA /* UIButton+standart.swift */; };
+		EC16DCDF29ACCF1E00FEA4FA /* UILabel+standart .swift in Sources */ = {isa = PBXBuildFile; fileRef = EC16DCDE29ACCF1E00FEA4FA /* UILabel+standart .swift */; };
+		EC16DCE129ACD4C600FEA4FA /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC16DCE029ACD4C600FEA4FA /* SettingsModel.swift */; };
+		EC16DCE329ACD4ED00FEA4FA /* VectorsImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC16DCE229ACD4ED00FEA4FA /* VectorsImages.swift */; };
+		EC16DCE529ACD89600FEA4FA /* UIStackView+standart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC16DCE429ACD89600FEA4FA /* UIStackView+standart.swift */; };
 		ECF862D429A8A986005971DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF862D329A8A986005971DE /* AppDelegate.swift */; };
 		ECF862D629A8A986005971DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF862D529A8A986005971DE /* SceneDelegate.swift */; };
 		ECF862DD29A8A98E005971DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECF862DC29A8A98E005971DE /* Assets.xcassets */; };
@@ -45,6 +50,11 @@
 		685B2291B549FA12CDC69D42 /* Pods-PuzzleDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PuzzleDemo.debug.xcconfig"; path = "Target Support Files/Pods-PuzzleDemo/Pods-PuzzleDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		EC16DCCD29AA131F00FEA4FA /* LevelFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelFailedView.swift; sourceTree = "<group>"; };
 		EC16DCCF29AA133100FEA4FA /* LevelFailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelFailedViewController.swift; sourceTree = "<group>"; };
+		EC16DCDC29ACBD7D00FEA4FA /* UIButton+standart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+standart.swift"; sourceTree = "<group>"; };
+		EC16DCDE29ACCF1E00FEA4FA /* UILabel+standart .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+standart .swift"; sourceTree = "<group>"; };
+		EC16DCE029ACD4C600FEA4FA /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		EC16DCE229ACD4ED00FEA4FA /* VectorsImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorsImages.swift; sourceTree = "<group>"; };
+		EC16DCE429ACD89600FEA4FA /* UIStackView+standart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+standart.swift"; sourceTree = "<group>"; };
 		ECF862D029A8A986005971DE /* PuzzleDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuzzleDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF862D329A8A986005971DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECF862D529A8A986005971DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +128,20 @@
 			path = LevelFailed;
 			sourceTree = "<group>";
 		};
+		EC16DCDB29ACBD2300FEA4FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ECF8632329A938F7005971DE /* CornerRadius.swift */,
+				ECF8632129A938D2005971DE /* Fonts.swift */,
+				ECF862F529A8AE5A005971DE /* Colors.swift */,
+				EC16DCDC29ACBD7D00FEA4FA /* UIButton+standart.swift */,
+				EC16DCDE29ACCF1E00FEA4FA /* UILabel+standart .swift */,
+				EC16DCE229ACD4ED00FEA4FA /* VectorsImages.swift */,
+				EC16DCE429ACD89600FEA4FA /* UIStackView+standart.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		ECF862C729A8A986005971DE = {
 			isa = PBXGroup;
 			children = (
@@ -149,12 +173,10 @@
 				ECF8630829A8E18F005971DE /* LevelOne */,
 				ECF862E729A8AA34005971DE /* Coordinator */,
 				ECF8630729A8E10E005971DE /* App */,
+				EC16DCDB29ACBD2300FEA4FA /* Extensions */,
 				ECF862DC29A8A98E005971DE /* Assets.xcassets */,
 				ECF862DE29A8A98E005971DE /* LaunchScreen.storyboard */,
 				ECF862E129A8A98E005971DE /* Info.plist */,
-				ECF862F529A8AE5A005971DE /* Colors.swift */,
-				ECF8632129A938D2005971DE /* Fonts.swift */,
-				ECF8632329A938F7005971DE /* CornerRadius.swift */,
 			);
 			path = PuzzleDemo;
 			sourceTree = "<group>";
@@ -192,6 +214,7 @@
 			children = (
 				ECF862FE29A8CD0E005971DE /* SettingsViewController.swift */,
 				ECF8630029A8CD1A005971DE /* SettingsView.swift */,
+				EC16DCE029ACD4C600FEA4FA /* SettingsModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -375,8 +398,12 @@
 				ECF8630429A8D9EA005971DE /* LevelsViewController.swift in Sources */,
 				ECF8632029A90719005971DE /* LevelOneViewController+.swift in Sources */,
 				ECF862F429A8ADE3005971DE /* MainScreenView.swift in Sources */,
+				EC16DCE129ACD4C600FEA4FA /* SettingsModel.swift in Sources */,
+				EC16DCDD29ACBD7E00FEA4FA /* UIButton+standart.swift in Sources */,
+				EC16DCDF29ACCF1E00FEA4FA /* UILabel+standart .swift in Sources */,
 				ECF862E929A8AA4B005971DE /* ScreensCoordinator.swift in Sources */,
 				ECF862F229A8ADD0005971DE /* MainScreenViewController.swift in Sources */,
+				EC16DCE329ACD4ED00FEA4FA /* VectorsImages.swift in Sources */,
 				ECF862D629A8A986005971DE /* SceneDelegate.swift in Sources */,
 				ECF8630A29A8E8E3005971DE /* LevelOneViewController.swift in Sources */,
 				EC16DCCE29AA131F00FEA4FA /* LevelFailedView.swift in Sources */,
@@ -385,6 +412,7 @@
 				ECF8631029A8EE90005971DE /* LevelsViewCell.swift in Sources */,
 				ECF862FB29A8B12D005971DE /* GameRulesView.swift in Sources */,
 				ECF862F929A8B0FC005971DE /* GameRulesViewController.swift in Sources */,
+				EC16DCE529ACD89600FEA4FA /* UIStackView+standart.swift in Sources */,
 				ECF8631B29A8FE18005971DE /* LevelsViewController+.swift in Sources */,
 				ECF8632729A96888005971DE /* PublicService.swift in Sources */,
 				EC16DCD029AA133100FEA4FA /* LevelFailedViewController.swift in Sources */,

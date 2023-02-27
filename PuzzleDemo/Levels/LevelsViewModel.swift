@@ -6,6 +6,6 @@
 //
 
 import Foundation
-struct  LevelsViewModel {
+class LevelsViewModel {
     let arrayOfLevels = ["level1.pdf","level2.pdf","level3.pdf","image21.pdf","image21.pdf","image21.pdf","image21.pdf","image21.pdf","image21.pdf","image21.pdf","image21.pdf","image21.pdf"]
 }

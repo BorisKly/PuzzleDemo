@@ -9,4 +9,5 @@ import Foundation
 
 public enum CornerRadius {
     static let  forButtons = 10
+    static let  forButtonsRound = 20
 }
